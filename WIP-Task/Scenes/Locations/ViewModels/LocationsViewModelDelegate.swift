@@ -13,9 +13,9 @@ protocol LocationsViewModelDelegate {
     
     // Data Source
     
-    func numberOfItems() -> Int
+    var numberOfItems: Int { get }
     
-    //func itemFor(row: Int) ->
+    func itemFor(row: Int) -> Location
     
     // Events
     

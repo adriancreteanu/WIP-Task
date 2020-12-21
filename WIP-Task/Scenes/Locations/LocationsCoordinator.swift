@@ -20,7 +20,8 @@ class LocationsCoordinator: Coordinator {
     // MARK: VM / VC's
     
     var locationsViewModel: LocationsViewModel {
-        let viewModel = LocationsViewModel()
+        let locationsService = LocationApiService()
+        let viewModel = LocationsViewModel(service: locationsService)
         viewModel.coordinatorDelegate = self
         return viewModel
     }

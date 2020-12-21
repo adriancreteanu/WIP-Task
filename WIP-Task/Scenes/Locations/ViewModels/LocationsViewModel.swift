@@ -17,13 +17,27 @@ class LocationsViewModel {
     
     // MARK: - Properties
     
+    fileprivate var locations: [Location] = []
+    
+    fileprivate let service: LocationService
+    
     // MARK: - Init
+    
+    init(service: LocationService) {
+        self.service = service
+    }
     
     func start() {
         getLocations()
     }
     
     func getLocations() {
+        let response = service.getPlaces()
+        
+        if let locations = response.0 {
+            self.locations = locations
+        }
+        
         viewDelegate?.updateScreen()
     }
     
@@ -31,10 +45,16 @@ class LocationsViewModel {
 
 extension LocationsViewModel: LocationsViewModelDelegate {
     
+    
+    
     // MARK: - Data source
     
-    func numberOfItems() -> Int {
-        return 5
+    var numberOfItems: Int {
+        return locations.count
+    }
+    
+    func itemFor(row: Int) -> Location {
+        return locations[row]
     }
     
     // MARK: - Events

@@ -13,6 +13,8 @@ class LocationsViewController: UIViewController {
     
     fileprivate var tableView: UITableView!
     
+    fileprivate let cellReuseIdentifier = "LocationTableViewCell"
+    
     var viewModel: LocationsViewModelDelegate! {
         didSet {
             viewModel.viewDelegate = self
@@ -23,20 +25,10 @@ class LocationsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         setup()
         setupTableView()
-        
-        // Move this to api client
-        let url = URL(string: "http://demo1042273.mockable.io/mylocations")!
-        let data = try? Data(contentsOf: url)
-        
-        if let data = data {
-            let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
-            
-            print(json)
-        }
-        
+        viewModel.start()
     }
     
     func setup() {
@@ -54,6 +46,7 @@ class LocationsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
+        tableView.register(LocationTableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
     }
     
     // MARK: - Actions
@@ -65,11 +58,16 @@ class LocationsViewController: UIViewController {
 
 extension LocationsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return viewModel.numberOfItems
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as? LocationTableViewCell else {
+            fatalError()
+        }
+        
+        cell.location = viewModel.itemFor(row: indexPath.row)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
