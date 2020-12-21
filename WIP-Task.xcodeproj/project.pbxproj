@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D11916B258FEE6D002319FF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D11916A258FEE6D002319FF /* Coordinator.swift */; };
+		2D11916F258FEE79002319FF /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D11916E258FEE79002319FF /* AppCoordinator.swift */; };
+		2D119178258FF16A002319FF /* LocationsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D119177258FF16A002319FF /* LocationsCoordinator.swift */; };
+		2D11917D258FF537002319FF /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D11917C258FF537002319FF /* LocationsViewController.swift */; };
+		2D119181258FF5BB002319FF /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D119180258FF5BB002319FF /* ViewExtension.swift */; };
+		2D119184258FFE4B002319FF /* LocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D119183258FFE4B002319FF /* LocationsViewModel.swift */; };
+		2D11918725900145002319FF /* LocationsViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D11918625900145002319FF /* LocationsViewModelDelegate.swift */; };
 		2DE46904258D71C300EE7AFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE46903258D71C300EE7AFE /* AppDelegate.swift */; };
 		2DE46906258D71C300EE7AFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE46905258D71C300EE7AFE /* SceneDelegate.swift */; };
 		2DE46908258D71C300EE7AFE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE46907258D71C300EE7AFE /* ViewController.swift */; };
@@ -15,6 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D11916A258FEE6D002319FF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		2D11916E258FEE79002319FF /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		2D119177258FF16A002319FF /* LocationsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsCoordinator.swift; sourceTree = "<group>"; };
+		2D11917C258FF537002319FF /* LocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
+		2D119180258FF5BB002319FF /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		2D119183258FFE4B002319FF /* LocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewModel.swift; sourceTree = "<group>"; };
+		2D11918625900145002319FF /* LocationsViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewModelDelegate.swift; sourceTree = "<group>"; };
 		2DE46900258D71C300EE7AFE /* WIP-Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WIP-Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DE46903258D71C300EE7AFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DE46905258D71C300EE7AFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +49,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D119169258FEE43002319FF /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				2D11916E258FEE79002319FF /* AppCoordinator.swift */,
+				2D11916A258FEE6D002319FF /* Coordinator.swift */,
+				2D119171258FF121002319FF /* Locations */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		2D119171258FF121002319FF /* Locations */ = {
+			isa = PBXGroup;
+			children = (
+				2D119177258FF16A002319FF /* LocationsCoordinator.swift */,
+				2D119173258FF13F002319FF /* Models */,
+				2D119175258FF14A002319FF /* ViewControllers */,
+				2D119174258FF144002319FF /* ViewModels */,
+				2D119176258FF151002319FF /* Views */,
+			);
+			path = Locations;
+			sourceTree = "<group>";
+		};
+		2D119173258FF13F002319FF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2D119174258FF144002319FF /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				2D119183258FFE4B002319FF /* LocationsViewModel.swift */,
+				2D11918625900145002319FF /* LocationsViewModelDelegate.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		2D119175258FF14A002319FF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2D11917C258FF537002319FF /* LocationsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2D119176258FF151002319FF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2D11917F258FF58F002319FF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2D119180258FF5BB002319FF /* ViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		2DE468F7258D71C300EE7AFE = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +129,8 @@
 		2DE46902258D71C300EE7AFE /* WIP-Task */ = {
 			isa = PBXGroup;
 			children = (
+				2D11917F258FF58F002319FF /* Extensions */,
+				2D119169258FEE43002319FF /* Scenes */,
 				2DE46903258D71C300EE7AFE /* AppDelegate.swift */,
 				2DE46905258D71C300EE7AFE /* SceneDelegate.swift */,
 				2DE46907258D71C300EE7AFE /* ViewController.swift */,
@@ -133,8 +210,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D11918725900145002319FF /* LocationsViewModelDelegate.swift in Sources */,
+				2D11917D258FF537002319FF /* LocationsViewController.swift in Sources */,
+				2D11916B258FEE6D002319FF /* Coordinator.swift in Sources */,
 				2DE46908258D71C300EE7AFE /* ViewController.swift in Sources */,
+				2D119178258FF16A002319FF /* LocationsCoordinator.swift in Sources */,
+				2D119184258FFE4B002319FF /* LocationsViewModel.swift in Sources */,
+				2D11916F258FEE79002319FF /* AppCoordinator.swift in Sources */,
 				2DE46904258D71C300EE7AFE /* AppDelegate.swift in Sources */,
+				2D119181258FF5BB002319FF /* ViewExtension.swift in Sources */,
 				2DE46906258D71C300EE7AFE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
