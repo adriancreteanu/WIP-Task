@@ -35,6 +35,7 @@ class DetailView: UIView {
         
         valueField = UITextField()
         valueField.font = UIFont.systemFont(ofSize: 14)
+        valueField.isEnabled = false
         
         let vStack = UIStackView(arrangedSubviews: [
             titleLabel,
