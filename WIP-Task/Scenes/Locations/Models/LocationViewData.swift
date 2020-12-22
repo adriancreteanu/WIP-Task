@@ -15,15 +15,17 @@ struct LocationViewData: LocationViewDataType {
     }
     
     var distance: String {
-        let myCoordsTM = CLLocation(latitude: 45.7489, longitude: 21.2087)
+        // TODO: Get user's real location using CLLocationManager
+        let coordinatesTimisoara = CLLocation(latitude: 45.7489, longitude: 21.2087)
         let locationCoordinates = CLLocation(latitude: location.latitude, longitude: location.longitude)
         
-        let distanceInMeters = myCoordsTM.distance(from: locationCoordinates)
-        return String(distanceInMeters)
+        let distanceInMeters = coordinatesTimisoara.distance(from: locationCoordinates)
+        let distanceInKM  = distanceInMeters / 1000
+        return String(format: "%.2f km", distanceInKM)
     }
     
-    var imageStringURL: String {
-        return location.imageStringURL ?? ""
+    var imageURL: URL? {
+        return URL(string: location.imageStringURL)
     }
     
     private let location: Location

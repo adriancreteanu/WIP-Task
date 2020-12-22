@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import SDWebImage
 
 class LocationTableViewCell: UITableViewCell {
     
-    //fileprivate var locationImageView: UIImageView!
+    fileprivate var locationImageView: UIImageView!
     fileprivate var addressLabel: UILabel!
     fileprivate var distanceLabel: UILabel!
     
@@ -18,6 +19,7 @@ class LocationTableViewCell: UITableViewCell {
             // if empty -> unknown address?
             addressLabel.text = location?.address
             distanceLabel.text = location?.distance
+            locationImageView.sd_setImage(with: location?.imageURL)
         }
     }
 
@@ -32,7 +34,19 @@ class LocationTableViewCell: UITableViewCell {
     }
     
     func setup() {
-        //locationImageView = UIImageView()
+        
+        locationImageView = UIImageView()
+        locationImageView.contentMode = .scaleAspectFill
+        locationImageView.clipsToBounds = true
+        locationImageView.enableAutoLayout()
+        locationImageView.backgroundColor = UIColor.systemGray
+        
+        addSubview(locationImageView)
+        
+        locationImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        locationImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        locationImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        locationImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
         
         addressLabel = UILabel()
         distanceLabel = UILabel()
@@ -49,7 +63,7 @@ class LocationTableViewCell: UITableViewCell {
         
         vStack.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
         vStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
-        vStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        vStack.leadingAnchor.constraint(equalTo: locationImageView.trailingAnchor, constant: 10).isActive = true
         vStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
     }
 }

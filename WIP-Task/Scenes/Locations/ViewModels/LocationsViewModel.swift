@@ -51,27 +51,26 @@ class LocationsViewModel {
         }
         
         // Save locations in db
+        saveLocationsInDatabase()
         
+        viewDelegate?.updateScreen()
+    }
+    
+    fileprivate func saveLocationsInDatabase() {
         var realmLocations: [RealmLocation] = []
-        var id = 0
         
         locations.forEach {
             let realmLocation = RealmLocation()
-            realmLocation.id = id
+            realmLocation.id = UUID().uuidString
             realmLocation.address = $0.address
             realmLocation.imageStringURL = $0.imageStringURL
             realmLocation.label = $0.label
             realmLocation.latitude = $0.latitude
             realmLocation.longitude = $0.longitude
             realmLocations.append(realmLocation)
-            
-            id = id + 1
         }
         
-        // Maybe perform this on another thread
         RealmDatabase.sharedInstance.saveList(objects: realmLocations)
-        
-        viewDelegate?.updateScreen()
     }
     
 }

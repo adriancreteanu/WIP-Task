@@ -13,7 +13,7 @@ class LocationDetailsViewModel {
     
     weak var coordinatorDelegate: LocationsViewModelCoordinatorDelegate?
     
-    weak var viewDelegate: LocationsViewModelViewDelegate?
+    weak var viewDelegate: LocationDetailsViewModelViewDelegate?
     
     // MARK: - Properties
     
@@ -24,6 +24,6 @@ class LocationDetailsViewModel {
     }
     
     func start() {
-        print(location)
+        viewDelegate?.updateScreen(location: self.location)
     }
 }

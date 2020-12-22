@@ -9,8 +9,6 @@ import Foundation
 
 protocol LocationService {
     
-    //func getPlaces(completion: @escaping (Result<[Location], Error>) -> Void)
-    
     func getPlaces() -> ([Location]?, Error?)
     
 }
@@ -27,11 +25,8 @@ class LocationApiService: LocationService {
             
             return (jsonData.locations, nil)
             
-            //completion(Result(catching: <#T##() throws -> _#>))
-            
         } catch {
             print("Error: TODO")
-            
             return (nil, error)
         }
     }

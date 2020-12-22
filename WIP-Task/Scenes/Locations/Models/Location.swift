@@ -11,7 +11,7 @@ protocol Location {
     
     var address: String { get }
     
-    var imageStringURL: String? { get }
+    var imageStringURL: String { get }
     
     var label: String { get }
     

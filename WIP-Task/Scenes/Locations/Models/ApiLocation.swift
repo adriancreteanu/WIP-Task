@@ -8,9 +8,9 @@
 import Foundation
 
 struct ApiLocation: Location, Decodable  {
-    var address: String
-    var imageStringURL: String?
-    var label: String
+    let address: String
+    let imageStringURL: String
+    let label: String
     var latitude: Double
     var longitude: Double
     
@@ -34,7 +34,7 @@ struct ApiLocation: Location, Decodable  {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
         address = try values.decode(String.self, forKey: .address)
-        imageStringURL = try values.decodeIfPresent(String.self, forKey: .imageStringURL)
+        imageStringURL = try values.decodeIfPresent(String.self, forKey: .imageStringURL) ?? ""
         label = try values.decode(String.self, forKey: .label)
         
         do {

@@ -8,8 +8,8 @@
 import RealmSwift
 
 class RealmLocation: Object, Location {
-    @objc dynamic var id: Int = 0
-    @objc dynamic var imageStringURL: String?
+    @objc dynamic var id: String = ""
+    @objc dynamic var imageStringURL: String = ""
     @objc dynamic var label: String = ""
     @objc dynamic var latitude: Double = 0.0
     @objc dynamic var longitude: Double = 0.0

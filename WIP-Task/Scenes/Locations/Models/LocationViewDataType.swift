@@ -13,6 +13,6 @@ protocol LocationViewDataType {
     
     var distance: String { get }
     
-    var imageStringURL: String { get }
+    var imageURL: URL? { get }
     
 }
