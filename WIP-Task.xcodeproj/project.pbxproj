@@ -28,6 +28,7 @@
 		2D15AD102591DDDF00810C26 /* RealmLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D15AD0F2591DDDF00810C26 /* RealmLocation.swift */; };
 		2D46F8A4259241090088EE1B /* LocationDetailsViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46F8A3259241090088EE1B /* LocationDetailsViewModelDelegate.swift */; };
 		2D46F8A7259274480088EE1B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46F8A6259274480088EE1B /* DetailView.swift */; };
+		2D46F8AA259280A20088EE1B /* ResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D46F8A9259280A20088EE1B /* ResponseData.swift */; };
 		2DE46904258D71C300EE7AFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE46903258D71C300EE7AFE /* AppDelegate.swift */; };
 		2DE46906258D71C300EE7AFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE46905258D71C300EE7AFE /* SceneDelegate.swift */; };
 		2DE4690D258D71C400EE7AFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DE4690C258D71C400EE7AFE /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		2D15AD0F2591DDDF00810C26 /* RealmLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmLocation.swift; sourceTree = "<group>"; };
 		2D46F8A3259241090088EE1B /* LocationDetailsViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewModelDelegate.swift; sourceTree = "<group>"; };
 		2D46F8A6259274480088EE1B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		2D46F8A9259280A20088EE1B /* ResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseData.swift; sourceTree = "<group>"; };
 		2DE46900258D71C300EE7AFE /* WIP-Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WIP-Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DE46903258D71C300EE7AFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DE46905258D71C300EE7AFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				2D119198259159B1002319FF /* LocationViewData.swift */,
 				2D11919B25915A82002319FF /* LocationViewDataType.swift */,
 				2D15AD0F2591DDDF00810C26 /* RealmLocation.swift */,
+				2D46F8A9259280A20088EE1B /* ResponseData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				2D11919C25915A82002319FF /* LocationViewDataType.swift in Sources */,
 				2D11919F25915CD0002319FF /* LocationDetailsViewController.swift in Sources */,
 				2D119178258FF16A002319FF /* LocationsCoordinator.swift in Sources */,
+				2D46F8AA259280A20088EE1B /* ResponseData.swift in Sources */,
 				2D11919325914A60002319FF /* ApiLocation.swift in Sources */,
 				2D119184258FFE4B002319FF /* LocationsViewModel.swift in Sources */,
 				2D11919625914CF0002319FF /* LocationTableViewCell.swift in Sources */,

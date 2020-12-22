@@ -7,48 +7,98 @@
 
 import Foundation
 
-struct ApiLocation: Location, Decodable  {
+struct ApiLocation: Location, Decodable {
+
     let address: String
     let imageStringURL: String
     let label: String
-    var latitude: Double
-    var longitude: Double
-    
-    enum CodingKeys: String, CodingKey {
-        case address
-        case label
-        case latitude = "lat"
-        case longitude = "lng"
-        case imageStringURL = "image"
-    }
-    
-    enum AltCodingKeys: String, CodingKey {
-        case address
-        case label
-        case latitude = "latitude"
-        case longitude = "longitude"
-        case imageStringURL = "image"
-    }
-    
+    let latitude: Double
+    let longitude: Double
+
     init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        
-        address = try values.decode(String.self, forKey: .address)
-        imageStringURL = try values.decodeIfPresent(String.self, forKey: .imageStringURL) ?? ""
-        label = try values.decode(String.self, forKey: .label)
-        
-        do {
-            latitude = try values.decode(Double.self, forKey: CodingKeys.latitude)
-            longitude = try values.decode(Double.self, forKey: CodingKeys.longitude)
-        } catch {
-            let altValues = try decoder.container(keyedBy: AltCodingKeys.self)
-            latitude = try altValues.decode(Double.self, forKey: .latitude)
-            longitude = try altValues.decode(Double.self, forKey: .longitude)
-        }
+        address = ApiLocation.decode(
+            value: String.self,
+            withDecoder: decoder,
+            forKey: .address,
+            fallbackKey: .address,
+            defaultValue: ""
+        )
+        imageStringURL = ApiLocation.decode(
+            value: String.self,
+            withDecoder: decoder,
+            forKey: .image,
+            fallbackKey: .image,
+            defaultValue: ""
+        )
+        label = ApiLocation.decode(
+            value: String.self,
+            withDecoder: decoder,
+            forKey: .label,
+            fallbackKey: .label,
+            defaultValue: ""
+        )
+        latitude = ApiLocation.decode(
+            value: Double.self,
+            withDecoder: decoder,
+            forKey: .lat,
+            fallbackKey: .latitude,
+            defaultValue: 0
+        )
+        longitude = ApiLocation.decode(
+            value: Double.self,
+            withDecoder: decoder,
+            forKey: .lng,
+            fallbackKey: .longitude,
+            defaultValue: 0
+        )
     }
+
+    private static func decode<Value: Decodable>(
+        value: Value.Type,
+        withDecoder decoder: Decoder,
+        forKey codingKey: CodingKeys,
+        fallbackKey: AltCodingKeys,
+        defaultValue: Value
+    ) -> Value {
+        let value = decodedValue(value, withDecoder: decoder, forKey: codingKey)
+            ?? decodedValue(value, withDecoder: decoder, forKey: fallbackKey)
+            ?? defaultValue
+        return value
+    }
+
+    private static func decodedValue<Value: Decodable, Key: CodingKey>(
+        _ value: Value.Type,
+        withDecoder decoder: Decoder,
+        forKey key: Key
+    ) -> Value? {
+        guard
+            let values = try? decoder.container(keyedBy: type(of: key).self),
+            let value = try? values.decode(value, forKey: key)
+        else {
+            return nil
+        }
+        return value
+    }
+
 }
 
-struct ResponseData: Decodable {
-    var locations: [ApiLocation]
-    var status: String
+private extension ApiLocation {
+
+    enum CodingKeys: String, CodingKey {
+        case address
+        case image
+        case label
+        case lat
+        case lng
+    }
+
+    enum AltCodingKeys: String, CodingKey {
+        case address
+        case image
+        case label
+        case latitude
+        case longitude
+    }
+
 }
+
