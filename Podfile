@@ -7,5 +7,6 @@ target 'WIP-Task' do
 
   # Pods for WIP-Task
   pod 'RealmSwift'
+  pod 'SDWebImage'
 
 end

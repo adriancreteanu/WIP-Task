@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,9 +23,11 @@
 		2D11919C25915A82002319FF /* LocationViewDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D11919B25915A82002319FF /* LocationViewDataType.swift */; };
 		2D11919F25915CD0002319FF /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D11919E25915CD0002319FF /* LocationDetailsViewController.swift */; };
 		2D1191A225915E00002319FF /* LocationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1191A125915E00002319FF /* LocationDetailsViewModel.swift */; };
+		2D15AD0A2591D47000810C26 /* RealmDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D15AD092591D47000810C26 /* RealmDatabase.swift */; };
+		2D15AD0D2591D5BA00810C26 /* DatabaseOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D15AD0C2591D5BA00810C26 /* DatabaseOperations.swift */; };
+		2D15AD102591DDDF00810C26 /* RealmLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D15AD0F2591DDDF00810C26 /* RealmLocation.swift */; };
 		2DE46904258D71C300EE7AFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE46903258D71C300EE7AFE /* AppDelegate.swift */; };
 		2DE46906258D71C300EE7AFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE46905258D71C300EE7AFE /* SceneDelegate.swift */; };
-		2DE46908258D71C300EE7AFE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE46907258D71C300EE7AFE /* ViewController.swift */; };
 		2DE4690D258D71C400EE7AFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DE4690C258D71C400EE7AFE /* Assets.xcassets */; };
 		2DE46910258D71C400EE7AFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DE4690E258D71C400EE7AFE /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -47,10 +49,12 @@
 		2D11919B25915A82002319FF /* LocationViewDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewDataType.swift; sourceTree = "<group>"; };
 		2D11919E25915CD0002319FF /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 		2D1191A125915E00002319FF /* LocationDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewModel.swift; sourceTree = "<group>"; };
+		2D15AD092591D47000810C26 /* RealmDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDatabase.swift; sourceTree = "<group>"; };
+		2D15AD0C2591D5BA00810C26 /* DatabaseOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseOperations.swift; sourceTree = "<group>"; };
+		2D15AD0F2591DDDF00810C26 /* RealmLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmLocation.swift; sourceTree = "<group>"; };
 		2DE46900258D71C300EE7AFE /* WIP-Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WIP-Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DE46903258D71C300EE7AFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DE46905258D71C300EE7AFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2DE46907258D71C300EE7AFE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2DE4690C258D71C400EE7AFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DE4690F258D71C400EE7AFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DE46911258D71C400EE7AFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,7 +80,6 @@
 				2622A537ACDF3A4A31415AC8 /* Pods-WIP-Task.debug.xcconfig */,
 				4E64D226EF11A20CE643DFE3 /* Pods-WIP-Task.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -105,10 +108,11 @@
 		2D119173258FF13F002319FF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2D11918B25913D76002319FF /* Location.swift */,
 				2D11919225914A60002319FF /* ApiLocation.swift */,
+				2D11918B25913D76002319FF /* Location.swift */,
 				2D119198259159B1002319FF /* LocationViewData.swift */,
 				2D11919B25915A82002319FF /* LocationViewDataType.swift */,
+				2D15AD0F2591DDDF00810C26 /* RealmLocation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -156,6 +160,15 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		2D15AD082591D45F00810C26 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				2D15AD092591D47000810C26 /* RealmDatabase.swift */,
+				2D15AD0C2591D5BA00810C26 /* DatabaseOperations.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		2DE468F7258D71C300EE7AFE = {
 			isa = PBXGroup;
 			children = (
@@ -177,12 +190,12 @@
 		2DE46902258D71C300EE7AFE /* WIP-Task */ = {
 			isa = PBXGroup;
 			children = (
+				2D15AD082591D45F00810C26 /* Database */,
 				2D11918E25913FE0002319FF /* Services */,
 				2D11917F258FF58F002319FF /* Extensions */,
 				2D119169258FEE43002319FF /* Scenes */,
 				2DE46903258D71C300EE7AFE /* AppDelegate.swift */,
 				2DE46905258D71C300EE7AFE /* SceneDelegate.swift */,
-				2DE46907258D71C300EE7AFE /* ViewController.swift */,
 				2DE4690C258D71C400EE7AFE /* Assets.xcassets */,
 				2DE4690E258D71C400EE7AFE /* LaunchScreen.storyboard */,
 				2DE46911258D71C400EE7AFE /* Info.plist */,
@@ -315,17 +328,19 @@
 				2D11918725900145002319FF /* LocationsViewModelDelegate.swift in Sources */,
 				2D11918C25913D76002319FF /* Location.swift in Sources */,
 				2D11917D258FF537002319FF /* LocationsViewController.swift in Sources */,
+				2D15AD102591DDDF00810C26 /* RealmLocation.swift in Sources */,
 				2D1191A225915E00002319FF /* LocationDetailsViewModel.swift in Sources */,
 				2D11916B258FEE6D002319FF /* Coordinator.swift in Sources */,
+				2D15AD0D2591D5BA00810C26 /* DatabaseOperations.swift in Sources */,
 				2D11919C25915A82002319FF /* LocationViewDataType.swift in Sources */,
 				2D11919F25915CD0002319FF /* LocationDetailsViewController.swift in Sources */,
-				2DE46908258D71C300EE7AFE /* ViewController.swift in Sources */,
 				2D119178258FF16A002319FF /* LocationsCoordinator.swift in Sources */,
 				2D11919325914A60002319FF /* ApiLocation.swift in Sources */,
 				2D119184258FFE4B002319FF /* LocationsViewModel.swift in Sources */,
 				2D11919625914CF0002319FF /* LocationTableViewCell.swift in Sources */,
 				2D11916F258FEE79002319FF /* AppCoordinator.swift in Sources */,
 				2DE46904258D71C300EE7AFE /* AppDelegate.swift in Sources */,
+				2D15AD0A2591D47000810C26 /* RealmDatabase.swift in Sources */,
 				2D119181258FF5BB002319FF /* ViewExtension.swift in Sources */,
 				2D11919025913FF2002319FF /* LocationService.swift in Sources */,
 				2DE46906258D71C300EE7AFE /* SceneDelegate.swift in Sources */,

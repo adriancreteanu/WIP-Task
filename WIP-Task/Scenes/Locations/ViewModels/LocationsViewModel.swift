@@ -29,7 +29,18 @@ class LocationsViewModel {
     }
     
     func start() {
-        getLocations()
+        let savedLocations = getDatabaseLocations()
+        
+        if savedLocations.isEmpty {
+            self.getLocations()
+        } else {
+            self.locations = savedLocations
+            viewDelegate?.updateScreen()
+        }
+    }
+    
+    func getDatabaseLocations() -> [Location] {
+        return RealmDatabase.sharedInstance.getList(class: RealmLocation.self)
     }
     
     func getLocations() {
@@ -38,6 +49,27 @@ class LocationsViewModel {
         if let locations = response.0 {
             self.locations = locations
         }
+        
+        // Save locations in db
+        
+        var realmLocations: [RealmLocation] = []
+        var id = 0
+        
+        locations.forEach {
+            let realmLocation = RealmLocation()
+            realmLocation.id = id
+            realmLocation.address = $0.address
+            realmLocation.imageStringURL = $0.imageStringURL
+            realmLocation.label = $0.label
+            realmLocation.latitude = $0.latitude
+            realmLocation.longitude = $0.longitude
+            realmLocations.append(realmLocation)
+            
+            id = id + 1
+        }
+        
+        // Maybe perform this on another thread
+        RealmDatabase.sharedInstance.saveList(objects: realmLocations)
         
         viewDelegate?.updateScreen()
     }
