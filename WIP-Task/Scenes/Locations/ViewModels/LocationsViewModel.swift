@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class LocationsViewModel {
     
@@ -45,23 +46,22 @@ class LocationsViewModel {
 
 extension LocationsViewModel: LocationsViewModelDelegate {
     
-    
-    
     // MARK: - Data source
     
     var numberOfItems: Int {
         return locations.count
     }
     
-    func itemFor(row: Int) -> Location {
-        return locations[row]
+    func itemFor(row: Int) -> LocationViewDataType {
+        let location = locations[row]
+        return LocationViewData(location: location)
     }
     
     // MARK: - Events
     
     func didSelectRowAt(_ row: Int, from controller: UIViewController) {
-        
+        let location = locations[row]
+        coordinatorDelegate?.didSelect(location: location, from: controller)
     }
-    
     
 }

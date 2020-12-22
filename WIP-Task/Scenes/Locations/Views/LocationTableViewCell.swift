@@ -11,11 +11,13 @@ class LocationTableViewCell: UITableViewCell {
     
     //fileprivate var locationImageView: UIImageView!
     fileprivate var addressLabel: UILabel!
+    fileprivate var distanceLabel: UILabel!
     
-    var location: Location? {
+    var location: LocationViewDataType? {
         didSet {
             // if empty -> unknown address?
             addressLabel.text = location?.address
+            distanceLabel.text = location?.distance
         }
     }
 
@@ -33,11 +35,21 @@ class LocationTableViewCell: UITableViewCell {
         //locationImageView = UIImageView()
         
         addressLabel = UILabel()
-        addressLabel.enableAutoLayout()
-        addSubview(addressLabel)
+        distanceLabel = UILabel()
         
-        addressLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
-        addressLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
-        addressLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        let vStack = UIStackView(arrangedSubviews: [
+            addressLabel,
+            distanceLabel
+        ])
+        
+        vStack.axis = .vertical
+        vStack.spacing = 5
+        vStack.enableAutoLayout()
+        addSubview(vStack)
+        
+        vStack.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+        vStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
+        vStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        vStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
     }
 }

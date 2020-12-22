@@ -71,6 +71,8 @@ extension LocationsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectRowAt(indexPath.row, from: self)
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

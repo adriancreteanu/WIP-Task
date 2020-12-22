@@ -58,8 +58,14 @@ class LocationsCoordinator: Coordinator {
 
 extension LocationsCoordinator {
     
-    func goToLocationDetails(from controller: UIViewController) {
-        // TODO
+    func goToLocation(_ location: Location, from controller: UIViewController) {
+        let detailsViewController = LocationDetailsViewController()
+        let viewModel = LocationDetailsViewModel(location: location)
+        viewModel.coordinatorDelegate = self
+        detailsViewController.viewModel = viewModel
+        
+        rootNavigationController.pushViewController(detailsViewController, animated: true)
+        //controller.present(detailsViewController, animated: true, completion: nil)
     }
 }
 
@@ -67,8 +73,8 @@ extension LocationsCoordinator {
 
 extension LocationsCoordinator: LocationsViewModelCoordinatorDelegate {
    
-    func didSelect(from controller: UIViewController) {
-        goToLocationDetails(from: controller)
+    func didSelect(location: Location, from controller: UIViewController) {
+        goToLocation(location, from: controller)
     }
 
 }

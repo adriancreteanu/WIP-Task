@@ -15,7 +15,7 @@ protocol LocationsViewModelDelegate {
     
     var numberOfItems: Int { get }
     
-    func itemFor(row: Int) -> Location
+    func itemFor(row: Int) -> LocationViewDataType
     
     // Events
     
@@ -27,7 +27,7 @@ protocol LocationsViewModelDelegate {
 
 protocol LocationsViewModelCoordinatorDelegate: class {
     
-    func didSelect(from controller: UIViewController)
+    func didSelect(location: Location, from controller: UIViewController)
 }
 
 protocol LocationsViewModelViewDelegate: class {
