@@ -13,17 +13,6 @@ class AppCoordinator: Coordinator {
     
     let window: UIWindow?
     
-//    lazy var rootViewController: UINavigationController = {
-//        return UINavigationController(rootViewController: UIViewController())
-//    }()
-    
-//    let apiClient: ApiClient = {
-//        let configuration = URLSessionConfiguration.default
-//        configuration.httpAdditionalHeaders = ["Content-Type": "application/json; charset=utf-8"]
-//        let apiClient = ApiClient(configuration: configuration)
-//        return apiClient
-//    }()
-    
     // MARK: - Coordinator
     
     init(window: UIWindow?) {
@@ -31,19 +20,11 @@ class AppCoordinator: Coordinator {
     }
     
     override func start() {
-//        guard let window = window else {
-//            return
-//        }
-//        
-        //window.rootViewController = rootViewController
-        //window.makeKeyAndVisible()
-        
-        //goToLocations(from: rootViewController)
         showLocationsList()
     }
     
     override func finish() {
-        
+        // Perform cleanup
     }
 }
 
@@ -54,11 +35,5 @@ extension AppCoordinator {
         addChildCoordinator(locationsCoordinator)
         locationsCoordinator.start()
     }
-    
-//    func goToLocations(from controller: UINavigationController) {
-//        let locationsCoordinator = LocationsCoordinator(rootViewController: controller)
-//        addChildCoordinator(locationsCoordinator)
-//        locationsCoordinator.start()
-//    }
-    
+
 }

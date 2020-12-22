@@ -57,17 +57,9 @@ class LocationsViewModel {
     }
     
     fileprivate func saveLocationsInDatabase() {
-        var realmLocations: [RealmLocation] = []
         
-        locations.forEach {
-            let realmLocation = RealmLocation()
-            realmLocation.id = UUID().uuidString
-            realmLocation.address = $0.address
-            realmLocation.imageStringURL = $0.imageStringURL
-            realmLocation.label = $0.label
-            realmLocation.latitude = $0.latitude
-            realmLocation.longitude = $0.longitude
-            realmLocations.append(realmLocation)
+        let realmLocations = locations.map {
+            RealmLocation.make(location: $0)
         }
         
         RealmDatabase.sharedInstance.saveList(objects: realmLocations)

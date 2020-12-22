@@ -18,4 +18,15 @@ class RealmLocation: Object, Location {
     override class func primaryKey() -> String? {
         return "id"
     }
+    
+    static func make(location: Location) -> RealmLocation {
+        let realmLocation = RealmLocation()
+        realmLocation.id = UUID().uuidString
+        realmLocation.address = location.address
+        realmLocation.imageStringURL = location.imageStringURL
+        realmLocation.label = location.label
+        realmLocation.latitude = location.latitude
+        realmLocation.longitude = location.longitude
+        return realmLocation
+    }
 }

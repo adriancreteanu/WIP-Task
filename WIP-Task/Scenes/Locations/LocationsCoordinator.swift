@@ -11,8 +11,6 @@ class LocationsCoordinator: Coordinator {
     
     // MARK: - Properties
     
-    //let rootViewController: UINavigationController
-    
     let rootNavigationController = UINavigationController()
       
     let window: UIWindow?
@@ -27,11 +25,7 @@ class LocationsCoordinator: Coordinator {
     }
     
     // MARK: - Coordinator
-    
-//    init(rootViewController: UINavigationController) {
-//        self.rootViewController = rootViewController
-//    }
-    
+
     init(window: UIWindow?) {
         self.window = window
     }
@@ -44,12 +38,11 @@ class LocationsCoordinator: Coordinator {
         
         window?.rootViewController = rootNavigationController
         window?.makeKeyAndVisible()
-        
-        //rootViewController.pushViewController(locationsVC, animated: true)
+    
     }
     
     override func finish() {
-        //
+        // Perform cleanup
     }
     
 }
@@ -65,7 +58,6 @@ extension LocationsCoordinator {
         detailsViewController.viewModel = viewModel
         
         rootNavigationController.pushViewController(detailsViewController, animated: true)
-        //controller.present(detailsViewController, animated: true, completion: nil)
     }
 }
 

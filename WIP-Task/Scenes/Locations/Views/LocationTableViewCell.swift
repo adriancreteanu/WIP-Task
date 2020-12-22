@@ -16,7 +16,6 @@ class LocationTableViewCell: UITableViewCell {
     
     var location: LocationViewDataType? {
         didSet {
-            // if empty -> unknown address?
             addressLabel.text = location?.address
             distanceLabel.text = location?.distance
             locationImageView.sd_setImage(with: location?.imageURL)
